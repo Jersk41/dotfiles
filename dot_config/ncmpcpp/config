@@ -1,0 +1,103 @@
+# Directories
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory = ~/.lyrics
+
+# Connection settings
+#mpd_host = localhost
+#mpd_port = 6600
+#mpd_password = ""
+#mpd_connection_timeout = 5
+mpd_music_dir = "/mnt/d/Backups/Music"
+mpd_crossfade_time = 5
+
+# Visualizer
+visualizer_data_source = "/tmp/mpd.fifo"
+visualizer_output_name = "audio_fifo"
+#visualizer_sync_internal = "30"
+visualizer_in_stereo = "no"
+visualizer_type = "wave"
+visualizer_fps = 60
+#visualizer_autoscale = no
+#visualizer_look = "▄▄"
+visualizer_look = "●▮"
+#visualizer_color = blue, cyan, green, yellow, magenta, red
+#visualizer_spectrum_smooth_look = yes
+#visualizer_spectrum_smooth_look_legacy_chars = yes
+#visualizer_spectrum_dft_size = 2
+#visualizer_spectrum_gain = 10
+#visualizer_spectrum_hz_min = 20
+#visualizer_spectrum_hz_max = 20000
+#visualizer_spectrum_log_scale_x = yes
+#visualizer_spectrum_log_scale_y = yes
+
+# System Encoding
+system_encoding = "UTF-8"
+
+# Delay
+#playlist_disable_highlight_delay = 5
+#message_delay_time = 5
+
+# Song Format
+
+#song_list_format = "{%a - }{%t}|{$8%f$9}$R{$3%l$9}"
+song_list_format = {$5$b%a}{ |$6{ "%t"}}$R{%l}
+
+#song_status_format = "$8%a$9 ✖ $2%t$9"
+song_status_format = {{$2%a$9 - }{$8%t$9}}|{%f}
+
+#song_library_format = "{%n > }{%t}|{%f}"
+#song_library_format = {%n - }{%t}|{%f}
+
+#alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
+#alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}
+
+song_window_title_format = "%a - %t"
+#song_window_title_format = {%a - }{%t}|{%f}
+
+#current_item_prefix = $(yellow)$r
+#current_item_suffix = $/r$(end)
+#current_item_inactive_column_prefix = $(white)$r
+#current_item_inactive_column_suffix = $/r$(end)
+now_playing_prefix = "$b"
+#now_playing_suffix = "$8$/b"
+#browser_playlist_prefix = "$2playlist$9 "
+#selected_item_prefix = $6
+#selected_item_suffix = $9
+#modified_item_prefix = $3> $9
+
+# Other settings
+execute_on_song_change = songinfo
+execute_on_player_state_change = zsh -c "source $HOME/.zshrc"
+playlist_show_mpd_host = no
+playlist_show_remaining_time = no
+playlist_shorten_total_times = yes
+playlist_separate_albums = no
+
+# Display Mode
+playlist_display_mode = columns
+browser_display_mode = classic
+search_engine_display_mode = classic
+playlist_editor_display_mode = classic
+discard_colors_if_item_is_selected = yes
+#show_duplicate_tags = yes
+
+# Columns Settings
+song_columns_list_format = (40)[white]{a} (50)[cyan]{t|f:Title} (7f)[magenta]{lr}
+
+#colors
+colors_enabled = "yes"
+
+#centered_cursor = "yes"
+cyclic_scrolling = "yes"
+#mouse_list_scroll_whole_page = "no"
+#progressbar_look = "▄▄ "
+#titles_visibility = "no"
+header_visibility = "yes"
+#statusbar_visibility = "yes" 
+#browser_playlist_prefix = "$2plist »$9 "
+#browser_display_mode = "columns"
+#discard_colors_if_item_is_selected = "no"
+#search_engine_display_mode = "columns"
+#follow_now_playing_lyrics = "yes"
+#display_screens_numbers_on_start = "no"
+#  vim: set ts=2 sw=2 tw=0 :
