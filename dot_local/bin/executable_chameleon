@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+pywal() {
+  wal -i "$1" -a "$2"
+  wpg -s "$1" --alpha "$2"
+  #slick-pywal
+  echo "Color scheme is changed from $1 image with alpha $2"
+}
+export -f pywal
+
+colorschemedir="$HOME/.cache/wal"
+iscolor=$(awk '/\[color\]/' "$colorschemedir/config")
+if [[ -n $iscolor ]]; then
+  echo "Warna lama ditemukan"
+else
+  echo "Tidak ada warna!"
+fi
+pywal "$1" "$2"
+swww img "$1"
+# Change Music Visualizer Cava's colorscheme
+cavadir="$HOME/.config/cava"
+# Change Papirus with Custom Colors
+/opt/oomox/plugins/icons_papirus/change_color.sh -o Chameleon $HOME/.cache/wal/colors-oomox
+# Change GTK Colors
+/opt/oomox/plugins/theme_oomox/change_color.sh -o Chameleon $HOME/.cache/wal/colors-oomox
+# Change Firefox Colorschemes
+pywalfox update
+# Make and Change Cava Colorscemes
+cp "$cavadir/config-base" "$cavadir/config"
+cat "$colorschemedir/colors-cava.conf" >>"$cavadir/config"
+[[ $1 = "-v" || $3 = '-v' ]] && eval tail -n 27 "$cavadir/config"
+# Change colorscheme btop
+cat "$colorschemedir/colors-btop.theme" >>"$HOME/.config/btop/themes/wal.theme"
+
+# Display Notification
+notify-send -a Chameleon -u normal "Theme Change Finished" "Enjoy new colorscheme that sync with wallpapers"

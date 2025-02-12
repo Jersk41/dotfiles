@@ -1,0 +1,82 @@
+@import url("../../.cache/wal/colors-waybar.css");
+
+* {
+	border: none;
+	font-family: "FiraCode Nerd Font", "Noto Sans Mono CJK SC", FontAwesome,
+		sans-serif;
+	font-size: 15px;
+	color: @foreground;
+	padding: 0;
+	margin: 0;
+	transition: background-color 0.3s ease-out;
+}
+
+#waybar {
+	background: @background;
+	color: @foreground;
+	transition: all 0.5s ease-in-out;
+}
+
+/* make window module transparent when no windows present */
+window#waybar.empty #window {
+	background-color: transparent;
+	border: none;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	margin: 0.25em 10px;
+	padding: 0.25em 0.25em;
+}
+
+.modules-right > widget > #workspaces:hover{
+	background: @color14;
+}
+
+#custom-arch {
+	background: transparent;
+	padding-left: 0.25em;
+}
+
+#custom-arch:hover {
+	background-color: @color14;
+	color: @background;
+}
+
+#workspaces button {
+	padding-left: 0.25em;
+	background-color: transparent;
+}
+
+#workspaces button:hover {
+	background: @color14;
+}
+
+#workspaces button.visible {
+	background: @color4;
+}
+
+#workspaces button.urgent {
+	background: @color5;
+}
+
+#idle_inhibitor,
+#network,
+#pulseaudio,
+#backlight,
+#usage,
+#battery,
+#clock,
+#tray,
+#keyboards {
+	background: transparent;
+	color: @foreground;
+	padding: 0 0.25em;
+}
+
+.not-keyboards > *,
+.not-usage > *,
+.not-power > *{
+	margin: 0 0.25em;
+}

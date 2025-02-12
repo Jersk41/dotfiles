@@ -112,14 +112,14 @@ export EDITOR="gvim"
 cat ~/.cache/wal/sequences
 
 # To add support for TTYs this line can be optionally added.
-source ~/.cache/wal/colors-tty.sh
+source $HOME/.cache/wal/colors-tty.sh
 
 #arabic
 setopt COMBINING_CHARS
 
 source $HOME/.zprofile
-export PATH="/home/jafar/.config/herd-lite/bin:$PATH"
-export PHP_INI_SCAN_DIR="/home/jafar/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+export PATH="$HOME/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
 # CUDA setup
 export CUDA_HOME="/opt/cuda"

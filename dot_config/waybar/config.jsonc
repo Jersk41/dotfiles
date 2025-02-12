@@ -1,0 +1,311 @@
+// -*- mode: jsonc -*-
+{
+  // "layer": "top", // Waybar at top layer
+  "position": "top",
+  "height": 30,
+  "spacing": 5,
+  "margin": "0 0 5",
+  "reload_style_on_change": true,
+  "fixed-center": true,
+  "modules-left": [
+    "custom/arch",
+    "hyprland/workspaces",
+    // "hyprland/submap",
+    "group/keyboards",
+    // "custom/media",
+    "cava"
+  ],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    // "mpd",
+    "idle_inhibitor",
+    "pulseaudio",
+    "group/connections",
+    "backlight",
+    "power-profiles-daemon",
+    "group/usage",
+    "battery",
+    "battery#bat2",
+    "clock",
+    "tray",
+    "group/powers" // "custom/power"
+  ],
+  // Left Modules
+  "custom/arch": {
+    "format": "󰣇 ",
+    "on-click": "pkill wofi || wofi --show drun -I",
+    "tooltip": true,
+    "tooltip-format": "btw"
+  },
+  "hyprland/workspaces": {
+    "show-special": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": " ",
+      "2": " ",
+      "3": " ",
+      "4": "󰊗 ",
+      "5": " ",
+      "special": " ",
+      "urgent": " ",
+      //"active": " ",
+      "default": " "
+    },
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+  "hyprland/submap": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+
+  "group/keyboards": {
+    "orientation": "horizontal",
+    "modules": ["hyprland/language", "keyboard-state"]
+  },
+  "hyprland/language": {
+    "format": "\uf1ab {short}"
+  },
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": {
+      "numlock": "\udb80\udfa6 ",
+      "capslock": "\udb82\ude9b "
+    },
+    "format-icons": {
+      "locked": "",
+      "unlocked": ""
+    }
+  }, 
+  /*"custom/media": {
+    "format": "{icon} {text}",
+    "return-type": "json",
+    "max-length": 40,
+    "format-icons": {
+      "spotify": "",
+      "default": "🎜"
+    },
+    "escape": true,
+    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+  }, */
+  "cava": {
+    // "cava_config": "~/.config/cava/cava-waybar.conf",
+    "framerate": 30,
+    "autosens": 1,
+    // "sensitivity": 100,
+    "bars": 10,
+    "lower_cutoff_freq": 50,
+    "higher_cutoff_freq": 10000,
+    "method": "pulse",
+    "source": "auto",
+    "sample_rate": 44100,
+    "sample_bits": 16,
+    "stereo": true,
+    "reverse": false,
+    "bar_delimiter": 0,
+    "monstercat": false,
+    "waves": false,
+    "noise_reduction": 0.77,
+    "input_delay": 2,
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "actions": {
+      "on-click-right": "mode"
+    }
+  },
+  // Center Modules
+  "hyprland/window": {
+    "icon": true,
+    "icon-size": 16,
+    "max-length": 75
+  },
+  // Right Modules
+  /* "mpd": {
+      "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+      "format-disconnected": "Disconnected ",
+      "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+      "unknown-tag": "N/A",
+      "interval": 5,
+      "consume-icons": {
+          "on": " "
+      },
+      "random-icons": {
+          "off": "<span color=\"#f53c3c\"></span> ",
+          "on": " "
+      },
+      "repeat-icons": {
+          "on": " "
+      },
+      "single-icons": {
+          "on": "1 "
+      },
+      "state-icons": {
+          "paused": "",
+          "playing": ""
+      },
+      "tooltip-format": "MPD (connected)",
+      "tooltip-format-disconnected": "MPD (disconnected)"
+  }, */
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    }
+  },
+  "group/connections": {
+    "orientation": "horizontal",
+    "modules": ["network", "bluetooth"],
+    "drawer": {
+			"transition-duration": 500,
+			"children-class": "not-connection",
+			"transition-left-to-right": false
+		}
+  },
+  "network": {
+    "on-click": "kitty --name Networks --detach -1 nmtui",
+    "format": "{ifname}",
+    "format-wifi": " ",
+    "format-ethernet": " ",
+    "format-disconnected": "⚠ ",
+    "tooltip-format-disconnected": "Disconnected"
+  },
+  "bluetooth": {
+    "format": "\udb80\udcaf",
+    "format-disabled": "\udb80\udcb2",
+    "format-connected": "\udb80\udcb1",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{percent}% {icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  "group/usage": {
+    "orientation": "horizontal",
+    "modules": ["temperature", "cpu", "memory"],
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+      "children-class": "not-usage",
+      "click-to-reveal": false
+    }
+  },
+  "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    // "format-critical": "{temperatureC}°C {icon}",
+    "format": " {temperatureC}°C",
+    "format-icons": ["", "", ""]
+  },
+  "cpu": {
+    "interval": 30,
+    "format": "\uf4bc {}%",
+    "max-length": 10
+  },
+  "memory": {
+    "interval": 30,
+    "format": "\uefc5 {used:0.1f}G"
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
+  },
+  "battery#bat2": {
+    "bat": "BAT2"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "rotate": 0,
+    "format-muted": "{icon}",
+    "on-click": "pavucontrol -t 3",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "tooltip-format": "{icon} {desc} {volume}%",
+    "ignored-sinks": ["Easy Effects Sink"],
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
+      "phone": " ",
+      "portable": " ",
+      "car": " ",
+      "default": [" ", " ", " "]
+    }
+  },
+  "clock": {
+    "timezone": "Asia/Jakarta",
+    "format": "{:%H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%d-%m-%Y}"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  /* "custom/power": {
+    "format": "⏻ ",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate"
+    }
+  } */
+  "group/powers": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
+      "click-to-reveal": false
+    },
+    "modules": ["custom/power", "custom/quit", "custom/lock", "custom/reboot"]
+  },
+  "custom/quit": {
+    "format": "󰗼 ",
+    "tooltip": false,
+    "on-click": "hyprctl dispatch exit"
+  },
+  "custom/lock": {
+    "format": "󰍁 ",
+    "tooltip": false,
+    "on-click": "swaylock"
+  },
+  "custom/reboot": {
+    "format": "󰜉 ",
+    "tooltip": false,
+    "on-click": "reboot"
+  },
+  "custom/power": {
+    "format": " ",
+    "tooltip": false,
+    "on-click": "shutdown now"
+  }
+}
