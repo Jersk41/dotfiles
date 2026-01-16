@@ -1,0 +1,14 @@
+[init]
+	defaultBranch = main
+[user]
+	email = japarssidik820@gmail.com
+	name = Japar Sidik
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ad = add .
+	ci = commit
+	lg = log --oneline --graph --decorate
+	sti = stash
+	sto = stash pop
