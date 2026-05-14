@@ -9,6 +9,8 @@ ZSH_THEME="fishy"
 # ENABLE_CORRECTION="true"
 # COMPLETION_WAITING_DOTS="true"
 
+export ZSH_CUSTOM="$HOME/.config/zsh"
+
 # Plugins
 plugins=(
     git
