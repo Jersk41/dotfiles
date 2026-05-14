@@ -1,0 +1,83 @@
+if &compatible
+  set nocompatible
+endif
+
+syntax on
+filetype plugin indent on
+
+set encoding=utf-8
+
+set number
+set ruler
+set cursorline
+
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smartindent
+
+set ignorecase
+set smartcase
+
+set mouse=a
+
+set scrolloff=8
+
+set termguicolors
+
+set backspace=indent,eol,start
+
+set clipboard=unnamedplus
+
+set undofile
+
+let mapleader = " "
+
+" =========================
+" Plugins
+" =========================
+
+call plug#begin()
+
+Plug 'arcticicestudio/nord-vim'
+
+call plug#end()
+
+colorscheme nord
+
+" =========================
+" Keymaps
+" =========================
+
+nnoremap <C-s> :w<CR>
+nnoremap <C-q> :q<CR>
+
+inoremap <C-s> <Esc>:w<CR>a
+
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+
+" =========================
+" Persistent Undo / Backup
+" =========================
+
+if exists('$XDG_CACHE_HOME')
+  let s:cache = $XDG_CACHE_HOME
+else
+  let s:cache = $HOME . '/.cache'
+endif
+
+let &undodir = s:cache . '/vim/undo//'
+let &backupdir = s:cache . '/vim/backup//'
+let &directory = s:cache . '/vim/swap//'
+
+" Create directories if they don't exist
+if !isdirectory(expand(&undodir))
+  call mkdir(expand(&undodir), 'p')
+endif
+if !isdirectory(expand(&backupdir))
+  call mkdir(expand(&backupdir), 'p')
+endif
+if !isdirectory(expand(&directory))
+  call mkdir(expand(&directory), 'p')
+endif
