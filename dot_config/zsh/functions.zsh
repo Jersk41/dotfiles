@@ -9,3 +9,12 @@ mkd() {
 t() {
   tmux new -A -s "${1:-main}"
 }
+
+# Gemini CLI inside VSCode terminal wrapperd by tmux support
+gmn() {
+  if [[ -n "$VSCODE_INJECTION" ]]; then
+    TERM_PROGRAM=vscode gemini "$@"
+  else
+    gemini "$@"
+  fi
+}
